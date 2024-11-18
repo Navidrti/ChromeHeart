@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromeHeart", "ChromeHeart.csproj", "{37775897-A535-45A1-BD8A-90007D2EAAAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37775897-A535-45A1-BD8A-90007D2EAAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37775897-A535-45A1-BD8A-90007D2EAAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37775897-A535-45A1-BD8A-90007D2EAAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37775897-A535-45A1-BD8A-90007D2EAAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FD6B566-6D83-4E53-8E13-1DFBBAE8B18E}
+	EndGlobalSection
+EndGlobal

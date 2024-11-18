@@ -1,0 +1,786 @@
+﻿@RenderBody()
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Chrome Hearts</title>
+    <link href="~/Layout/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="~/Layout/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/Layout/css/Fonts.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="~/Layout/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function () {
+                $(".dropdown dd ul").toggle();
+            });
+
+            $(".dropdown dd ul li a").click(function () {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function () {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+    </script>
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    @model ProductViewModels
+
+
+
+
+
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a><img src="~/Layout/images/images.png" width="65px" alt="" /></a>
+                        </div>
+                        <div class="menu">
+                            <a class="toggleMenu" href="#"><img src="~/Layout/images/nav.png" alt="" /></a>
+                            <ul class="nav" id="nav">
+
+                                <li><a asp-controller="Admin" asp-action="Index">Insert</a></li>
+                                <li><a asp-controller="Products" asp-action="ShowProducts">Products</a></li>
+                                <li><a asp-controller="Admin" asp-action="ListOfUsers">Users</a></li>
+                                <li><a asp-controller="Products" asp-action="ListOfOrders">Orders</a></li>
+
+                                <div class="clear"></div>
+                            </ul>
+                            <script type="text/javascript" src="~/Layout/js/responsive-nav.js"></script>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="header_right">
+                        <!-- start search-->
+                        <div class="search-box">
+                            <div id="sb-search" class="sb-search">
+                                <form>
+                                    <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+                                    <input class="sb-search-submit" type="submit" value="">
+                                    <span class="sb-icon-search"> </span>
+                                </form>
+                            </div>
+                        </div>
+                        <!----search-scripts---->
+                        <script src="~/Layout/js/classie.js"></script>
+                        <script src="~/Layout/js/uisearch.js"></script>
+                        <script>
+                            new UISearch(document.getElementById('sb-search'));
+                        </script>
+                        <ul class="icon1 sub-icon1 profile_img">
+                            <li>
+                                <a class="active-icon c1" href="#"> </a>
+                                <ul class="sub-icon1 list">
+                                    <div class="product_control_buttons">
+                                        <a href="#"><img src="~/Layout/images/edit.png" alt="" /></a>
+                                        <a href="#"><img src="~/Layout/images/close_edit.png" alt="" /></a>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <li class="list_img"><img src="~/Layout/images/images.png" height="50px" alt="" /></li>
+                                    <li class="list_desc">
+                                        <h4>
+                                            @{
+                                                if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <a href="#"> @(User.Identity.Name)</a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#">@("Guest")</a>
+                                                }
+                                            }
+
+                                        </h4><span class="actual">
+                                            @{
+                                                if (User.Identity.IsAuthenticated)
+                                                {
+                                                    @("Welcome")
+                                                    ;
+                                                }
+                                                else
+                                                {
+                                                    @("Please login")
+                                                    ;
+                                                }
+                                            }
+                                        </span>
+                                    </li>
+                                    @{
+                                        if (User.Identity.IsAuthenticated)
+                                        {
+
+                                            <div class="login_button"><a asp-controller="Account" asp-action="Logout">Logout</a></div>
+                                        }
+                                        else
+                                        {
+
+                                            <div class="login_buttons">
+                                                <div class="check_button"><a asp-controller="Home" asp-action="CheckOut">Check out</a></div>
+                                                <div class="login_button"><a asp-controller="Home" asp-action="Login">Login</a></div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        }
+                                    }
+                                    <div class="clear"></div>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="awe312">
+        <div class="row salam">
+            <div class="column">
+                <div class="outer">
+                    <div class="dot"></div>
+                    <div class="card12">
+                        <div class="ray"></div>
+                        <div class="text">120+</div>
+                        <div>Products</div>
+                        <div class="line topl"></div>
+                        <div class="line leftl"></div>
+                        <div class="line bottoml"></div>
+                        <div class="line rightl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="outer">
+                    <div class="dot"></div>
+                    <div class="card12">
+                        <div class="ray"></div>
+                        <div class="text">200+</div>
+                        <div>Users</div>
+                        <div class="line topl"></div>
+                        <div class="line leftl"></div>
+                        <div class="line bottoml"></div>
+                        <div class="line rightl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="outer">
+                    <div class="dot"></div>
+                    <div class="card12">
+                        <div class="ray"></div>
+                        <div class="text">407+</div>
+                        <div>Orders</div>
+                        <div class="line topl"></div>
+                        <div class="line leftl"></div>
+                        <div class="line bottoml"></div>
+                        <div class="line rightl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="outer">
+                    <div class="dot"></div>
+                    <div class="card12">
+                        <div class="ray"></div>
+                        <div class="text">102+</div>
+                        <div>Admins</div>
+                        <div class="line topl"></div>
+                        <div class="line leftl"></div>
+                        <div class="line bottoml"></div>
+                        <div class="line rightl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="laaa">
+        <p>Total Reached</p>
+        <div class="container aliii">
+            <div class="skills html">60%</div>
+        </div>
+
+        <p>Total Likes</p>
+        <div class="container aliii">
+            <div class="skills css">20%</div>
+        </div>
+
+        <p>Total Comments</p>
+        <div class="container aliii">
+            <div class="skills js">30%</div>
+        </div>
+
+        <p>Total Share</p>
+        <div class="container aliii">
+            <div class="skills php">80%</div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="mamad">
+
+        <span class="heading">User Rating</span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <p>4.1 average based on 254 reviews.</p>
+        <hr style="border:3px solid #f1f1f1">
+
+        <div class="row">
+            <div class="side">
+                <div>5 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-5"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>150</div>
+            </div>
+            <div class="side">
+                <div>4 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-4"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>63</div>
+            </div>
+            <div class="side">
+                <div>3 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-3"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>15</div>
+            </div>
+            <div class="side">
+                <div>2 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-2"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>6</div>
+            </div>
+            <div class="side">
+                <div>1 star</div>
+            </div>
+            <div class="middle">
+                <div class="bar-container">
+                    <div class="bar-1"></div>
+                </div>
+            </div>
+            <div class="side right">
+                <div>20</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="adlfadfasdf">
+
+
+        <div class="card">
+            <div class="header">
+                <div class="left">
+                    <span class="title">Views</span>
+                    <span class="number">259</span>
+                </div>
+                <span class="like">
+                    <svg viewBox="-1.35 0 1504.4 1504.4"
+                         id="Layer_1"
+                         xmlns="http://www.w3.org/2000/svg"
+                         fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier"
+                           stroke-linecap="round"
+                           stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>Like</title>
+                            <ellipse class="st0"
+                                     cx="750.8"
+                                     cy="752.2"
+                                     rx="750.8"
+                                     ry="752.2"></ellipse>
+                            <path class="st1"
+                                  d="M378.3 667.5h165.1c13 0 23.6 10.5 23.6 23.6v379.1c0 13-10.5 23.6-23.6 23.6H378.3c-13 0-23.6-10.5-23.6-23.6V691c.1-13 10.6-23.5 23.6-23.5zM624.7 1004.7V733.1c.1-66.9 18.8-132.4 54.1-189.2 21.5-34.4 69.7-89.5 96.7-118 6-6.4 27.8-25.2 27.8-35.5 0-13.2 1.5-34.5 2-74.2.3-25.2 20.8-45.9 46-45.7h1.1c44.1.8 58.2 41.6 58.2 41.6s37.7 74.4 2.5 165.4c-29.7 76.9-35.8 83.1-35.8 83.1s-9.6 13.9 20.8 13.3c0 0 185.6-.8 192-.8 13.7 0 57.4 12.5 54.9 68.2-1.8 41.2-27.4 55.6-40.5 60.3-1.7.6-2.6 2.5-1.9 4.2.3.7.8 1.3 1.5 1.7 13.4 7.8 40.8 27.5 40.2 57.7-.8 36.6-15.5 50.1-46.1 58.5-1.7.4-2.8 2.2-2.3 3.9.2.9.8 1.6 1.5 2 11.6 6.6 31.5 22.7 30.3 55.3-1.2 33.2-25.2 44.9-38.3 48.9-1.7.5-2.7 2.3-2.2 4 .2.7.7 1.4 1.3 1.8 8.3 5.7 20.6 18.6 20 45.1-.3 14-5 24.2-10.9 31.5-9.3 11.5-23.9 17.5-38.7 17.6l-411.8.8c-.1-.1-22.4 0-22.4-29.9z"></path>
+                        </g>
+                    </svg>
+                </span>
+            </div>
+            <div class="chart">
+                <svg version="1.1"
+                     style="font-family: Roboto; font-size: 12px;"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="370"
+                     height="200"
+                     viewBox="0 0 370 200"
+                     aria-hidden="false"
+                     aria-label="Interactive chart">
+                    <defs aria-hidden="true"><clipPath></clipPath></defs>
+                    <rect fill="none"
+                          x="44"
+                          y="10"
+                          width="316"
+                          height="175"
+                          aria-hidden="true"></rect>
+                    <g data-z-index="0" aria-hidden="true"></g>
+                    <rect fill="none"
+                          data-z-index="1"
+                          x="44"
+                          y="10"
+                          width="316"
+                          height="175"
+                          aria-hidden="true"></rect>
+                    <g data-z-index="1" aria-hidden="true">
+                        <path fill="none"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 96.5 10 L 96.5 185"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 148.5 10 L 148.5 185"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 201.5 10 L 201.5 185"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 254.5 10 L 254.5 185"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 306.5 10 L 306.5 185"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 359.5 10 L 359.5 185"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 43.5 10 L 43.5 185"
+                              opacity="1"></path>
+                    </g>
+                    <g data-z-index="1" aria-hidden="true">
+                        <path fill="none"
+                              stroke="#e6e6e6"
+                              stroke-width="1"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 44 185.5 L 360 185.5"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke="#e6e6e6"
+                              stroke-width="1"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 44 9.5 L 360 9.5"
+                              opacity="1"></path>
+                        <path fill="none"
+                              stroke="#e6e6e6"
+                              stroke-width="1"
+                              stroke-dasharray="none"
+                              data-z-index="1"
+                              d="M 44 98.5 L 360 98.5"
+                              opacity="1"></path>
+                    </g>
+                    <g data-z-index="2" aria-hidden="true">
+                        <path fill="none"
+                              stroke="#ccd6eb"
+                              stroke-width="1"
+                              data-z-index="7"
+                              d="M 44 185.5 L 360 185.5"></path>
+                    </g>
+                    <g data-z-index="2" aria-hidden="true">
+                        <path fill="none" data-z-index="7" d="M 44 10 L 44 185"></path>
+                    </g>
+                    <g data-z-index="3" aria-hidden="false">
+                        <g data-z-index="0.1"
+                           opacity="1"
+                           transform="translate(44,10) scale(1 1)"
+                           clip-path="url(#highcharts-tsgnjcw-268-)"
+                           aria-hidden="true">
+                            <path fill="rgba(111,88,233,0.35)"
+                                  d="M 26.333333333333 119 C 26.333333333333 119 57.9333333333332 141.75 79 141.75 C 100.066666666664 141.75 110.599999999996 108.5 131.66666666666 108.5 C 152.73333333332798 108.5 163.26666666666202 119 184.33333333333 119 C 205.399999999998 119 215.93333333333197 15.75 237 15.75 C 258.066666666664 15.75 289.66666666666 92.75 289.66666666666 92.75 L 289.66666666666 175 C 289.66666666666 175 258.066666666664 175 237 175 C 215.93333333333197 175 205.399999999998 175 184.33333333333 175 C 163.26666666666202 175 152.73333333332798 175 131.66666666666 175 C 110.599999999996 175 100.066666666664 175 79 175 C 57.9333333333332 175 26.333333333333 175 26.333333333333 175 Z"
+                                  data-z-index="0"></path>
+                            <path fill="none"
+                                  d="M 26.333333333333 119 C 26.333333333333 119 57.9333333333332 141.75 79 141.75 C 100.066666666664 141.75 110.599999999996 108.5 131.66666666666 108.5 C 152.73333333332798 108.5 163.26666666666202 119 184.33333333333 119 C 205.399999999998 119 215.93333333333197 15.75 237 15.75 C 258.066666666664 15.75 289.66666666666 92.75 289.66666666666 92.75"
+                                  data-z-index="1"
+                                  stroke="#6f58e9"
+                                  stroke-width="2"
+                                  stroke-linejoin="round"
+                                  stroke-linecap="round"></path>
+                            <path fill="none"
+                                  d="M 26.333333333333 119 C 26.333333333333 119 57.9333333333332 141.75 79 141.75 C 100.066666666664 141.75 110.599999999996 108.5 131.66666666666 108.5 C 152.73333333332798 108.5 163.26666666666202 119 184.33333333333 119 C 205.399999999998 119 215.93333333333197 15.75 237 15.75 C 258.066666666664 15.75 289.66666666666 92.75 289.66666666666 92.75"
+                                  data-z-index="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke="rgba(192,192,192,0.0001)"
+                                  stroke-width="22"
+                                  style="cursor: pointer;"></path>
+                        </g>
+                        <g data-z-index="0.1"
+                           opacity="1"
+                           transform="translate(44,10) scale(1 1)"
+                           clip-path="none"
+                           style="cursor: pointer;"
+                           aria-hidden="false">
+                            <path fill="#6f58e9"
+                                  d="M 26 123 A 4 4 0 1 1 26.003999999333335 122.99999800000016 Z"
+                                  opacity="1"
+                                  tabindex="-1"
+                                  role="img"
+                                  aria-label="x, 0, 32 units. Item 1."
+                                  style="outline: none;"></path>
+                            <path fill="#6f58e9"
+                                  d="M 79 145.75 A 4 4 0 1 1 79.00399999933333 145.74999800000018 Z"
+                                  opacity="1"
+                                  tabindex="-1"
+                                  role="img"
+                                  aria-label="x, 1, 19 units. Item 1."
+                                  style="outline: none;"></path>
+                            <path fill="#6f58e9"
+                                  d="M 131 112.5 A 4 4 0 1 1 131.00399999933333 112.49999800000016 Z"
+                                  opacity="1"
+                                  tabindex="-1"
+                                  role="img"
+                                  aria-label="x, 2, 38 units. Item 1."
+                                  style="outline: none;"></path>
+                            <path fill="#6f58e9"
+                                  d="M 184 123 A 4 4 0 1 1 184.00399999933333 122.99999800000016 Z"
+                                  opacity="1"
+                                  tabindex="-1"
+                                  role="img"
+                                  aria-label="x, 3, 32 units. Item 1."
+                                  style="outline: none;"></path>
+                            <path fill="#6f58e9"
+                                  d="M 237 19.75 A 4 4 0 1 1 237.00399999933333 19.74999800000017 Z"
+                                  opacity="1"
+                                  tabindex="-1"
+                                  role="img"
+                                  aria-label="x, 4, 91 units. Item 1."
+                                  style="outline: none;"></path>
+                            <path fill="#6f58e9"
+                                  d="M 289 96.75 A 4 4 0 1 1 289.00399999933336 96.74999800000016 Z"
+                                  opacity="1"
+                                  tabindex="-1"
+                                  role="img"
+                                  aria-label="x, 5, 47 units. Item 1."
+                                  style="outline: none;"></path>
+                        </g>
+                    </g>
+                    <g data-z-index="3" aria-hidden="true">
+                        <g stroke-linecap="round"
+                           style="cursor: pointer;"
+                           transform="translate(336,10)">
+                            <title>Chart context menu</title>
+                            <text font-family="Roboto-Regular,Roboto"
+                                  x="0"
+                                  data-z-index="1"
+                                  y="15.5"
+                                  style="color: rgb(51, 51, 51); font-weight: normal; fill: rgb(51, 51, 51);"></text>
+                        </g>
+                    </g>
+                    <text font-family="Roboto-Regular,Roboto"
+                          x="185"
+                          text-anchor="middle"
+                          data-z-index="4"
+                          style="color: rgb(51, 51, 51); font-size: 18px; fill: rgb(51, 51, 51);"
+                          y="24"
+                          aria-hidden="true"></text>
+                    <text font-family="Roboto-Regular,Roboto"
+                          x="185"
+                          text-anchor="middle"
+                          data-z-index="4"
+                          style="color: rgb(102, 102, 102); fill: rgb(102, 102, 102);"
+                          y="24"
+                          aria-hidden="true"></text>
+                    <text font-family="Roboto-Regular,Roboto"
+                          x="10"
+                          text-anchor="start"
+                          data-z-index="4"
+                          style="color: rgb(102, 102, 102); fill: rgb(102, 102, 102);"
+                          y="197"
+                          aria-hidden="true"></text>
+                    <g data-z-index="7" aria-hidden="true">
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="70.33333333333267"
+                              text-anchor="middle"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="204"
+                              opacity="1"></text>
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="122.99999999999666"
+                              text-anchor="middle"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="204"
+                              opacity="1"></text>
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="175.66666666666666"
+                              text-anchor="middle"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="204"
+                              opacity="1"></text>
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="228.33333333332666"
+                              text-anchor="middle"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="204"
+                              opacity="1"></text>
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="280.9999999999967"
+                              text-anchor="middle"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="204"
+                              opacity="1"></text>
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="333.6666666666667"
+                              text-anchor="middle"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="204"
+                              opacity="1"></text>
+                    </g>
+                    <g data-z-index="7" aria-hidden="true">
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="29"
+                              text-anchor="end"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="190"
+                              opacity="1">
+                            0
+                        </text>
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="29"
+                              text-anchor="end"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="15"
+                              opacity="1">
+                            100
+                        </text>
+                        <text font-family="Roboto-Regular,Roboto"
+                              x="29"
+                              text-anchor="end"
+                              transform="translate(0,0)"
+                              style="color: rgb(102, 102, 102); cursor: default; font-size: 11px; fill: rgb(102, 102, 102);"
+                              y="102"
+                              opacity="1">
+                            50
+                        </text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+
+
+        <div class="dnei" style="margin-left:20px">
+            <p class="time-text"><span>11:11</span><span class="time-sub-text">PM</span></p>
+            <p class="day-text">Wednesday, June 15th</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" stroke-width="0" fill="currentColor" stroke="currentColor" class="moon"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path><path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path></svg>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    <form asp-controller="Products" asp-action="Insert" method="post" enctype="multipart/form-data">
+
+        <div class="container col-4 offset-4" style="background-color:white;margin-top:200px;padding:10px;border:2px solid black;border-radius:10px">
+            <h1 class="ali">Insert Product</h1>
+            <label>Name:</label>
+            <input class="form-control" asp-for="Name" placeholder="Enter the name" />
+            <label>Price:</label>
+            <input class="form-control" asp-for="Price" placeholder="Enter the price" />
+            <label>Count:</label>
+            <input class="form-control" asp-for="Count" placeholder="Enter the count" />
+            <label>Image:</label>
+            <input type="file" class="form-control" asp-for="img" />
+            <button class="btn btn-primary" style="margin-top:10px">+Add Product</button>
+
+        </div>
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="footer" style="margin-top:430px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>Products</h4>
+                        <li><a href="#">Mens</a></li>
+                        <li><a href="#">Womens</a></li>
+                        <li><a href="#">Youth</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>About</h4>
+                        <li><a href="#">Careers and internships</a></li>
+                        <li><a href="#">Sponserships</a></li>
+                        <li><a href="#">team</a></li>
+                        <li><a href="#">Catalog Request/Download</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>Customer Support</h4>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping and Order Tracking</a></li>
+                        <li><a href="#">Easy Returns</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Replacement Binding Parts</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>Newsletter</h4>
+                        <div class="footer_search">
+                            <form>
+                                <input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
+                                <input type="submit" value="Go">
+                            </form>
+                        </div>
+                        <ul class="social">
+                            <li class="facebook"><a href="#"><span> </span></a></li>
+                            <li class="twitter"><a href="#"><span> </span></a></li>
+                            <li class="instagram"><a href="#"><span> </span></a></li>
+                            <li class="pinterest"><a href="#"><span> </span></a></li>
+                            <li class="youtube"><a href="#"><span> </span></a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+            <div class="row footer_bottom">
+                <div class="copy">
+                    <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
+                </div>
+                <dl id="sample" class="dropdown">
+                    <dt><a href="#"><span>Change Region</span></a></dt>
+                    <dd>
+                        <ul>
+                            <li><a href="#">Australia<img class="flag" src="~/Layout/images/as.png" alt="" /><span class="value">AS</span></a></li>
+                            <li><a href="#">Sri Lanka<img class="flag" src="~/Layout/images/srl.png" alt="" /><span class="value">SL</span></a></li>
+                            <li><a href="#">Newziland<img class="flag" src="~/Layout/images/nz.png" alt="" /><span class="value">NZ</span></a></li>
+                            <li><a href="#">Pakistan<img class="flag" src="~/Layout/images/pk.png" alt="" /><span class="value">Pk</span></a></li>
+                            <li><a href="#">United Kingdom<img class="flag" src="~/Layout/images/uk.png" alt="" /><span class="value">UK</span></a></li>
+                            <li><a href="#">United States<img class="flag" src="~/Layout/images/us.png" alt="" /><span class="value">US</span></a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
